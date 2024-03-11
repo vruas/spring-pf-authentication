@@ -115,7 +115,7 @@ atividade.
     3. **(0,25 Ponto)** PerfilRepository
     4. **(0,25 Ponto)** SistemaRepository
 
-7. **(0,5 Ponto)** criar um método capaz de consultar um **Usuario** pelo seu email e senha na classe UsuárioRepository;
+7. **(0,5 Ponto)** criar um método capaz de consultar um **Usuario** pelo seu email e senha na interface UsuárioRepository;
 
 ## No pacote resources criar as seguintes classes
 
