@@ -6,6 +6,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 @Entity
 @Table(name = "TB_2TDSPF_SISTEMA")
 @Data
@@ -32,5 +35,26 @@ public class Sistema {
     @Column(name = "SG_SISTEMA")
     private String sigla;
 
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinTable(
+            name = "TB_2TDSPF_RESPONSAVEIS",
+            joinColumns = {
+                    @JoinColumn(name = "NM_SISTEMA",
+                            referencedColumnName = "ID_SISTEMA",
+                            foreignKey = @ForeignKey(name = "FK_RESPONSAVEIS_SISTEMA")
+
+                            )
+            },
+
+            inverseJoinColumns = {
+                    @JoinColumn(name = "NM_USUARIO",
+                            referencedColumnName = "ID_USUARIO",
+                            foreignKey = @ForeignKey(
+                                    name = "FK_SISTEMA_RESPONSAVEIS")
+
+                    )
+            }
+    )
+            private Set<Usuario> responsaveis = new LinkedHashSet<>();
 
 }

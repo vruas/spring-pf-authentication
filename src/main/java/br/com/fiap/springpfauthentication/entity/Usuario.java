@@ -32,5 +32,14 @@ public class Usuario {
     @Column(name = "SENHA_USUARIO")
     private String senha;
 
+    @OneToOne(cascade =  {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn(
+            name = "Pessoa",
+            referencedColumnName = "ID_PESSOA",
+            foreignKey = @ForeignKey(name = "FK_PESSOA_USUARIO")
+
+            )
+            private Pessoa pessoa;
+
 
 }
